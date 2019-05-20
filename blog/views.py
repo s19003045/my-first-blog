@@ -6,6 +6,33 @@ from .forms import PostForm, CommentForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
+# #plot
+# from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+# from matplotlib.figure import Figure
+# import numpy as np
+# from django.http import HttpResponse
+
+# #plot test
+# def mplimage(request):
+#     fig = Figure()
+#     canvas = FigureCanvas(fig)
+#     ax = fig.add_subplot(111)
+#     x = np.arange(-2,1.5,.01)
+#     y = np.sin(np.exp(2*x))
+#     ax.plot(x, y)
+#     response = HttpResponse(content_type='image/png')
+#     canvas.print_png(response)
+#     return response
+
+# #test
+# def here(request):
+#     return HttpResponse('Mom, I am here！')
+
+# def add(request, a, b):
+#     s = int(a)+int(b)
+#     return HttpResponse(str(s))
+
+
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts':posts})

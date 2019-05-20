@@ -78,6 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
     }
 }
 
@@ -124,3 +125,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/'
+
+#設定js,image,css檔案放置位置
+STATICFILES_DIRS = (
+    ("js", os.path.join(STATIC_ROOT,'js')),
+    ("css", os.path.join(STATIC_ROOT,'css')),
+    ("images", os.path.join(STATIC_ROOT,'images')),
+)

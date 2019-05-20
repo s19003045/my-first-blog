@@ -1,45 +1,143 @@
-{% load static %}
-<html>
-    <head>
-        <title>Django Girls blog</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-		<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-		<link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet" type="text/css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>lesson8_array_guessNumber</title>
+    <link rel="stylesheet" href="lesson8_array_guessNumber.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <main>
+        <div class="banner">
+            <div class="banner_context">
+                <h1>Welcome to Guess world !</h1>
+                <button class="startGame">Start the game</button>
+            </div>
+
+        </div>
+
+        <div class="playground">
+            <div class="column left_div">
+                <div class="left_top_div" id="left_top_div">
+                    <h2>請輸入 4 個數字(不可有空格)：</h2>
+                    <h3>(數字0~9皆可)</h3>
+                    <h3>你有10次猜題機會！</h3>
+                    <div class="input_demo1">
+                        <input class="input_num" type="number" min="0" max="9">
+                        <input class="input_num" type="number" min="0" max="9">
+                        <input class="input_num" type="number" min="0" max="9">
+                        <input class="input_num" type="number" min="0" max="9">
+                    
+                        <input type="submit" value="送出" onclick="myFunction()">
+                    </div>
+                    <br>
+                    <div class="input_demo2" id="input_demo2">
+                        <form >
+                            <input id="input_text0" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1}">
+                            <input id="input_text1" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1}">
+                            <input id="input_text2" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1">
+                            <input id="input_text3" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1}">
+                            <input id="submit" type="submit" value="送出" onclick="userInput()">
+
+                            <!-- 若input為空值，則submit後，empty()回傳false，無法送出表單裡的資料。若無false，
+                            則會送出資料，並刷新頁面 -->
+                            <!-- <input id="submit" type="submit" value="送出" onclick="return empty()"> -->
+                        </form>
+                        <!-- 以下4行乃用來驗證input是否為空值 -->
+                        <!-- <input id="input_text0" class="input_text" type="text" maxlength="1" onblur="checknull(this)">
+                        <input id="input_text1" class="input_text" type="text" maxlength="1" onblur="checknull(this)">
+                        <input id="input_text2" class="input_text" type="text" maxlength="1" onblur="checknull(this)">
+                        <input id="input_text3" class="input_text" type="text" maxlength="1" onblur="checknull(this)"> -->
+                        
+                    </div>
+                    <div id="display"></div>
+                </div>
+
+                <div class="left_bottom_div" id="left_bottom_div">
+                    <p class="right_answer">正確答案為：<span id="answer"></span></p>
+                    <div id="information"></div><br>
+                    <div class="playAgain" id="playAgain">
+                        <button type="text" onclick="playAgian()">再玩一次</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="column right_div" id="right_div">
+                <table>
+                    <thead>
+                        <caption>玩家記錄</caption>
+                    </thead>
+                    <tbody id="tb_result">
+                        <tr>
+                            <th>輸入值</th>
+                            <th>結果</th>
+                        </tr>
+                        <tr>
+                            <td id="input_td1"></td>
+                            <td id="result_td1"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td2"></td>
+                            <td id="result_td2"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td3"></td>
+                            <td id="result_td3"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td4"></td>
+                            <td id="result_td4"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td5"></td>
+                            <td id="result_td5"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td6"></td>
+                            <td id="result_td6"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td7"></td>
+                            <td id="result_td7"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td8"></td>
+                            <td id="result_td8"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td9"></td>
+                            <td id="result_td9"></td>
+                        </tr>
+                        <tr>
+                            <td id="input_td10"></td>
+                            <td id="result_td10"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="clearfix"></div>
+        </div>
 
 
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </main>
 
-
-		<link rel="stylesheet" type="text/css" href="blog.css">
-<!--- Include the above in your HEAD tag ---------->
-    </head>
-    <body>
-
-     	<div class="page-header">
-			{% if user.is_authenticated %}
-				<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-				<a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-				<p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
-			{% else %}
-				<a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
-			{% endif %}
-			<h1><a href="/">Django Girls Blog</a></h1>
-		</div>
-		<div class="content container">
-			<div class="row">
-				<div class="col-md-8">
-				{% block content %}
-				{% endblock %}
-				</div>
-			</div>
-		</div>
-
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
+    <script src="lesson8_array_guessNumber.js"></script>
+</body>
 </html>
+
+
+<!-- 
+    1.使用者輸入的四個空格儲存成array_B
+    2.正確答案4個數字以亂數生成，存成array_A
+    3.比對array_A與array_B
+        判斷有幾個A(數字及位置皆一致)
+            array_A[i]=array_B[i]   則 A + 1
+        判斷有幾個B(數字正確，位置錯誤)
+
+    4.output：使用者輸入的數字為__ __ __ __，結果： __ A __ B
+    5.使用者繼續輸入四個數字，填完送出。
+
+-->
