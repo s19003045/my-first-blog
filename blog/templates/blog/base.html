@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>lesson8_array_guessNumber</title>
-    <link rel="stylesheet" href="lesson8_array_guessNumber.css">
+    <link rel="stylesheet" href="/static/css/lesson8_array_guessNumber.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 <body>
@@ -25,32 +26,23 @@
                     <h2>請輸入 4 個數字(不可有空格)：</h2>
                     <h3>(數字0~9皆可)</h3>
                     <h3>你有10次猜題機會！</h3>
-                    <div class="input_demo1">
-                        <input class="input_num" type="number" min="0" max="9">
-                        <input class="input_num" type="number" min="0" max="9">
-                        <input class="input_num" type="number" min="0" max="9">
-                        <input class="input_num" type="number" min="0" max="9">
-                    
-                        <input type="submit" value="送出" onclick="myFunction()">
-                    </div>
+
                     <br>
                     <div class="input_demo2" id="input_demo2">
-                        <form >
-                            <input id="input_text0" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1}">
-                            <input id="input_text1" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1}">
-                            <input id="input_text2" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1">
-                            <input id="input_text3" class="input_text" type="text" maxlength="1" required="required" pattern="[0-9]{1}">
-                            <input id="submit" type="submit" value="送出" onclick="userInput()">
-
-                            <!-- 若input為空值，則submit後，empty()回傳false，無法送出表單裡的資料。若無false，
-                            則會送出資料，並刷新頁面 -->
-                            <!-- <input id="submit" type="submit" value="送出" onclick="return empty()"> -->
+                        <form>
+                            <input id="input_text0" class="input_text" type="text" maxlength="1">
+                            <input id="input_text1" class="input_text" type="text" maxlength="1">
+                            <input id="input_text2" class="input_text" type="text" maxlength="1">
+                            <input id="input_text3" class="input_text" type="text" maxlength="1">
+                            <!-- myFunction乃先驗證輸入值是否有空格或<1或>9，若通過驗證則執行userInput() -->
+                            
+                            <button id="submit" type="button" onclick="myFunction()">送出</button>
+                            
+                            <!-- 下面不是個好方法，有一些問題待克服。若以submit的方式送出後，不會印出結果於table中，且會刷新頁面，回到banner。
+                                要想個辦法讓畫面停在輸入的地方 -->
+                            <!-- <input id="submit" type="submit" value="送出" onclick="myFunction()"> -->
                         </form>
-                        <!-- 以下4行乃用來驗證input是否為空值 -->
-                        <!-- <input id="input_text0" class="input_text" type="text" maxlength="1" onblur="checknull(this)">
-                        <input id="input_text1" class="input_text" type="text" maxlength="1" onblur="checknull(this)">
-                        <input id="input_text2" class="input_text" type="text" maxlength="1" onblur="checknull(this)">
-                        <input id="input_text3" class="input_text" type="text" maxlength="1" onblur="checknull(this)"> -->
+                      
                         
                     </div>
                     <div id="display"></div>
@@ -124,7 +116,7 @@
 
     </main>
 
-    <script src="lesson8_array_guessNumber.js"></script>
+    <script src="/static/js/lesson8_array_guessNumber.js"></script>
 </body>
 </html>
 

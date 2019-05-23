@@ -95,6 +95,7 @@ function clearInput() {
     }    
 }
 
+
 // 在此輪猜題遊戲中，每次玩家輸入後要清空的變數
 function clearVariable() {
     // 輸入值存成array
@@ -265,6 +266,38 @@ function empty() {
         return false;
     } 
 }
+
+function myFunction() {
+    var x0, x1, x2, x3;
+
+    // Get the value of the input field with id="numb"
+    x0 = document.getElementById("input_text0").value;
+    x1 = document.getElementById("input_text1").value;
+    x2 = document.getElementById("input_text2").value;
+    x3 = document.getElementById("input_text3").value;
+
+    // function formSubmit() {
+    //     var condId = document.getElementById("searchProductText");
+    //     var text = condId.value;
+    //     var textValue = text.replace(/(^\s*)|(\s*$)/g, "");     //替换输入内容当中所有的空字符，包括全角空格，半  
+    //     if (textValue == null || textValue == "") {
+    //         alert("输入的内容为空，无法查询！");
+    //         return false;
+    //     }
+
+    // }  
+
+
+    // If x is Not a Number or less than one or greater than 10
+    if (x0 == "" || x0 < 0 || x0 > 9 || x1== "" || x1 < 0 || x1 > 9 || x2=="" || x2 < 0 || x2 > 9 ||  
+        x3=="" || x3 < 0 || x3 > 9 ) {
+        alert("Input not valid");
+    } else {
+        userInput();
+    }
+    
+}
+
 
 // 當玩家輸入4個數字後，送出，要執行的動作
 function userInput(){

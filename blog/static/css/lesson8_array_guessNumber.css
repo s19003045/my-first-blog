@@ -31,18 +31,18 @@ input:focus {
     background: #e5e6e8;
 }
 .column {
-    width: 45%;
+    width: 50%;
     height: auto;
     /* border: 1px burlywood solid; */
     padding: 10px;
 }
 .left_div {
     float: left;
-    padding: 20px 40px;
+    padding: 20px 20px;
 }
 .right_div {
     float: left;
-    padding: 10px 10px;
+    padding: 20px 20px;
 }
 .banner h1 {
     border: ;
@@ -59,20 +59,28 @@ input:focus {
 .input_demo1 {
     display: none;
 }
-.right_answer {
+#submit {
     font-size: 1.2em;
+    width: auto;
+    border-radius: 10px;
 }
-.input_num {
+.right_answer {
+    font-size: 1.1em;
+}
+#playAgain button {
+    font-size: 1em;
+}
+/* .input_num {
     width:40px;
     height:45px;
     margin: 5px 10px;
     font-size: 1.5em;
     text-align: center;
-}
+} */
 .input_text {
     width:40px;
     height:45px;
-    margin: 5px 10px;
+    margin: 5px 0px;
     font-size: 1.5em;
     text-align: center;
 }
@@ -115,10 +123,15 @@ th, td {
 }
 
 @media only screen and (max-width: 1000px) {
-  .column {
+  .banner, .playground {
     width: 100%;
-  }
-  .right_div {
-    float: left;
-  }
+    margin: auto;
+  
 }
+  .banner {
+      height: 250px; 
+  }
+  .banner_context {
+      position: relative;
+      top: 50px;
+  }
