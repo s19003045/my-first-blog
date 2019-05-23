@@ -429,7 +429,14 @@ function userInput(){
     }else  {
         // alert("繼續輸入");
         //focus在input的第一個空格 
-        document.getElementById("input_text0").focus();
+        document.getElementById("right_div").focus({ preventScroll: false });
+        // $('.startGame').click(function () {
+        // function scrollToRecord(){    $('html,body').animate({ scrollTop: $('right_div').offset().top }, 'slow');
+        // }
+        // scrollToRecord();
+            //focus在input的第一個空格 
+            // document.getElementById("input_text0").focus();
+        // })
     }
 
     // 清空input
